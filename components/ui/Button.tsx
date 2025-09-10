@@ -23,19 +23,19 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseClasses =
-    'font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed relative';
+    'font-medium rounded-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed relative';
 
   const variants = {
     primary:
-      'bg-brand-primary hover:bg-blue-700 text-white focus:ring-brand-primary shadow-sm hover:shadow-md',
+      'bg-accent-600 hover:bg-accent-700 text-white focus:ring-accent-500 shadow-sm hover:shadow-md',
     secondary:
-      'bg-gray-100 hover:bg-gray-200 text-brand-dark focus:ring-gray-500 border border-gray-200',
+      'bg-surface-200 hover:bg-surface-300 text-ink-700 focus:ring-surface-400 border border-surface-300',
     accent:
-      'bg-brand-accent hover:bg-amber-600 text-white focus:ring-brand-accent shadow-sm hover:shadow-md',
+      'bg-accent-600 hover:bg-accent-700 text-white focus:ring-accent-500 shadow-sm hover:shadow-md',
     outline:
-      'border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white focus:ring-brand-primary bg-transparent',
+      'border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white focus:ring-accent-500 bg-transparent',
     ghost:
-      'text-brand-primary hover:bg-brand-primary/10 focus:ring-brand-primary bg-transparent',
+      'text-accent-600 hover:bg-accent-600/10 focus:ring-accent-500 bg-transparent',
   };
 
   const sizes = {

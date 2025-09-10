@@ -26,15 +26,15 @@ export const Feature: React.FC<FeatureProps> = ({
     <div className={cn(variants[variant], className)}>
       <div
         className={cn(
-          'flex items-center justify-center w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary mb-4',
+          'flex items-center justify-center w-12 h-12 rounded-2xl bg-accent-600/10 text-accent-600 mb-4',
           variant === 'horizontal' && 'mb-0 flex-shrink-0'
         )}
       >
         {icon}
       </div>
       <div className={variant === 'horizontal' ? 'flex-1' : ''}>
-        <h3 className="text-lg font-semibold text-brand-dark mb-2">{title}</h3>
-        <p className="text-brand-muted leading-relaxed">{description}</p>
+        <h3 className="text-lg font-semibold text-ink-900 mb-2">{title}</h3>
+        <p className="text-muted-500 leading-relaxed">{description}</p>
       </div>
     </div>
   );

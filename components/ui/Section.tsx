@@ -7,7 +7,7 @@ interface SectionProps {
   variant?: 'default' | 'dark' | 'accent' | 'gradient';
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   container?: boolean;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '7xl' | 'full';
+  containerSize?: 'sm' | 'lg' | 'full';
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -16,40 +16,34 @@ export const Section: React.FC<SectionProps> = ({
   variant = 'default',
   padding = 'lg',
   container = true,
-  maxWidth = '7xl',
+  containerSize = 'lg',
 }) => {
   const variants = {
     default: 'bg-white',
-    dark: 'bg-brand-dark text-white',
-    accent: 'bg-gradient-to-br from-brand-primary to-blue-700 text-white',
-    gradient: 'bg-gradient-to-br from-gray-50 to-white',
+    dark: 'bg-ink-900 text-white',
+    accent: 'bg-gradient-to-br from-accent-600 to-accent-700 text-white',
+    gradient: 'bg-gradient-section',
   };
 
   const paddings = {
     none: '',
-    sm: 'py-8',
-    md: 'py-12',
-    lg: 'py-16',
-    xl: 'py-20',
-    '2xl': 'py-24',
+    sm: 'py-12 md:py-16',
+    md: 'py-16 md:py-24',
+    lg: 'py-16 md:py-24',
+    xl: 'py-16 md:py-24',
+    '2xl': 'py-16 md:py-24',
   };
 
-  const maxWidths = {
-    sm: 'max-w-sm',
-    md: 'max-w-md',
-    lg: 'max-w-lg',
-    xl: 'max-w-xl',
-    '2xl': 'max-w-2xl',
-    '7xl': 'max-w-7xl',
-    full: 'max-w-full',
+  const containerSizes = {
+    sm: 'container-sm',
+    lg: 'container',
+    full: 'container-full',
   };
 
   return (
     <section className={cn(variants[variant], paddings[padding], className)}>
       {container ? (
-        <div className={cn('mx-auto px-4', maxWidths[maxWidth])}>
-          {children}
-        </div>
+        <div className={containerSizes[containerSize]}>{children}</div>
       ) : (
         children
       )}

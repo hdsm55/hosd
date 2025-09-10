@@ -105,32 +105,98 @@ export default function ServicesPage() {
     {
       step: '01',
       title: 'الاستشارة',
-      description: 'نناقش احتياجاتك وأهدافك لنفهم المشروع بشكل كامل',
+      description:
+        'نناقش احتياجاتك وأهدافك لنفهم المشروع بشكل كامل ونحدد المتطلبات التقنية',
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+          />
+        </svg>
+      ),
     },
     {
       step: '02',
       title: 'التخطيط',
-      description: 'نضع خطة عمل مفصلة مع الجدول الزمني والميزانية',
+      description:
+        'نضع خطة عمل مفصلة مع الجدول الزمني والميزانية ونحدد المراحل التنفيذية',
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+          />
+        </svg>
+      ),
     },
     {
       step: '03',
       title: 'التطوير',
-      description: 'نبدأ في تطوير المشروع مع تحديثات دورية على التقدم',
+      description:
+        'نبدأ في تطوير المشروع مع تحديثات دورية على التقدم وضمان الجودة العالية',
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          />
+        </svg>
+      ),
     },
     {
       step: '04',
       title: 'التسليم',
-      description: 'نسلم المشروع النهائي مع التدريب والدعم الفني',
+      description:
+        'نسلم المشروع النهائي مع التدريب والدعم الفني المستمر لضمان النجاح',
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
     },
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <Section variant="gradient" padding="xl">
+      <Section variant="gradient" padding="xl" className="scroll-mt-20 pt-20">
         <div className="text-center">
-          <h1 className="text-5xl font-bold text-brand-dark mb-6">خدماتي</h1>
-          <p className="text-xl text-brand-muted max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-ink mb-6">
+            خدماتي
+          </h1>
+          <p className="text-xl text-muted max-w-3xl mx-auto">
             أقدم حلول تقنية شاملة ومبتكرة تساعدك على تحقيق أهدافك الرقمية بأعلى
             معايير الجودة والاحترافية
           </p>
@@ -157,10 +223,10 @@ export default function ServicesPage() {
                 <div className={`text-${service.color}`}>{service.icon}</div>
               </div>
 
-              <h3 className="text-2xl font-bold text-brand-dark mb-4">
+              <h3 className="text-2xl font-bold text-ink-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-brand-muted mb-6">{service.description}</p>
+              <p className="text-muted-500 mb-6">{service.description}</p>
 
               <ul className="space-y-3 mb-8">
                 {service.features.map((feature, featureIndex) => (
@@ -176,23 +242,21 @@ export default function ServicesPage() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-brand-muted">{feature}</span>
+                    <span className="text-muted-500">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-surface-200 pt-6">
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-sm text-brand-muted">
-                    المدة الزمنية:
-                  </span>
-                  <span className="font-semibold text-brand-dark">
+                  <span className="text-sm text-muted-500">المدة الزمنية:</span>
+                  <span className="font-semibold text-ink-900">
                     {service.duration}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-brand-muted">السعر:</span>
-                  <span className="text-xl font-bold text-brand-primary">
+                  <span className="text-sm text-muted-500">السعر:</span>
+                  <span className="text-xl font-bold text-accent-600">
                     {service.price}
                   </span>
                 </div>
@@ -204,25 +268,32 @@ export default function ServicesPage() {
 
       {/* Process Section */}
       <Section variant="gradient" padding="xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-brand-dark mb-4">كيف أعمل؟</h2>
-          <p className="text-xl text-brand-muted max-w-2xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-ink mb-4">كيف أعمل؟</h2>
+          <p className="text-xl text-muted-500 max-w-2xl mx-auto">
             منهجية عمل منظمة تضمن جودة عالية ونتائج متميزة
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {process.map((step, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">
-                  {step.step}
-                </span>
+            <div
+              key={index}
+              className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-6 h-full flex flex-col"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center flex-shrink-0">
+                  {step.icon}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-ink-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-muted-500 text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-brand-dark mb-3">
-                {step.title}
-              </h3>
-              <p className="text-brand-muted">{step.description}</p>
             </div>
           ))}
         </div>
@@ -230,11 +301,11 @@ export default function ServicesPage() {
 
       {/* Technologies */}
       <Section padding="xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-brand-dark mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-ink mb-4">
             التقنيات التي أستخدمها
           </h2>
-          <p className="text-xl text-brand-muted max-w-2xl mx-auto">
+          <p className="text-xl text-muted-500 max-w-2xl mx-auto">
             أحدث التقنيات والأدوات لضمان أفضل النتائج
           </p>
         </div>

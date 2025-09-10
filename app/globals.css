@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,28 +8,62 @@
 @layer base {
   html {
     font-family: 'Inter', 'Cairo', system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-white text-brand-dark;
+    @apply bg-white text-gray-900;
+    line-height: 1.6;
   }
 
   [dir="rtl"] {
     font-family: 'Cairo', 'Inter', system-ui, sans-serif;
   }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.7;
+  }
 }
 
 @layer components {
+  /* Container */
+  .container {
+    @apply max-w-6xl mx-auto px-4;
+  }
+
+  /* Button */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
   .btn-primary {
-    @apply bg-brand-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
   }
 
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-brand-dark font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-white text-gray-700 border-gray-300 hover:bg-gray-50 focus:ring-blue-500;
   }
 
-  .btn-accent {
-    @apply bg-brand-accent hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  /* Card */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
   }
 }
 
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+}

@@ -74,7 +74,7 @@ export const Toast: React.FC<ToastProps> = ({
         </div>
         <button
           onClick={onClose}
-          className="ml-4 text-white hover:text-gray-200 transition-colors"
+          className="ml-4 text-white hover:text-surface-200 transition-colors"
         >
           <svg
             className="w-4 h-4"

@@ -30,9 +30,9 @@ export const CTABanner: React.FC<CTABannerProps> = ({
   className = '',
 }) => {
   const variants = {
-    default: 'bg-white border border-gray-200',
-    gradient: 'bg-gradient-to-r from-brand-primary to-blue-700 text-white',
-    dark: 'bg-brand-dark text-white',
+    default: 'bg-white border border-surface-200',
+    gradient: 'bg-gradient-to-r from-accent-600 to-accent-700 text-white',
+    dark: 'bg-ink-900 text-white',
   };
 
   return (
@@ -44,7 +44,7 @@ export const CTABanner: React.FC<CTABannerProps> = ({
       )}
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
-      <p className="text-lg mb-8 text-brand-muted max-w-2xl mx-auto">
+      <p className="text-lg mb-8 text-muted-500 max-w-2xl mx-auto">
         {description}
       </p>
 

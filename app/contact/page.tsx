@@ -334,10 +334,12 @@ export default function ContactPage() {
       />
 
       {/* Hero Section */}
-      <Section variant="gradient" padding="xl">
+      <Section variant="gradient" padding="xl" className="scroll-mt-20 pt-20">
         <div className="text-center">
-          <h1 className="text-5xl font-bold text-brand-dark mb-6">{t.title}</h1>
-          <p className="text-xl text-brand-muted max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-ink-900 mb-6">
+            {t.title}
+          </h1>
+          <p className="text-xl text-muted-500 max-w-3xl mx-auto">
             {t.subtitle}
           </p>
         </div>
@@ -345,10 +347,10 @@ export default function ContactPage() {
 
       {/* Forms Section */}
       <Section padding="xl">
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Quick Contact Form */}
           <Card variant="elevated" padding="lg">
-            <h2 className="text-2xl font-bold mb-6 text-brand-dark">
+            <h2 className="text-3xl md:text-4xl font-bold text-ink-900 mb-6">
               {t.quickContact}
             </h2>
             <form onSubmit={handleLeadSubmit} className="space-y-6">
@@ -443,13 +445,13 @@ export default function ContactPage() {
               />
 
               <div>
-                <label className="block text-sm font-medium text-brand-dark mb-2">
+                <label className="block text-sm font-medium text-ink-900 mb-2">
                   {t.form.message}
                 </label>
                 <textarea
                   name="message"
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors duration-200 placeholder:text-brand-muted"
+                  className="w-full px-4 py-3 border border-surface-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-colors duration-200 placeholder:text-muted-500"
                   placeholder={t.form.placeholders.message}
                   required
                 />
@@ -470,7 +472,7 @@ export default function ContactPage() {
 
           {/* Project Inquiry Form */}
           <Card variant="elevated" padding="lg">
-            <h2 className="text-2xl font-bold mb-6 text-brand-dark">
+            <h2 className="text-3xl md:text-4xl font-bold text-ink-900 mb-6">
               {t.projectInquiry}
             </h2>
             <form onSubmit={handleInquirySubmit} className="space-y-6">
@@ -498,12 +500,12 @@ export default function ContactPage() {
               />
 
               <div>
-                <label className="block text-sm font-medium text-brand-dark mb-2">
+                <label className="block text-sm font-medium text-ink-900 mb-2">
                   {t.form.serviceType}
                 </label>
                 <select
                   name="service_type"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 border border-surface-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-colors duration-200"
                   required
                 >
                   <option value="">{t.form.selectService}</option>
@@ -518,12 +520,12 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-brand-dark mb-2">
+                <label className="block text-sm font-medium text-ink-900 mb-2">
                   {t.form.budgetRange}
                 </label>
                 <select
                   name="budget_range"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 border border-surface-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-colors duration-200"
                 >
                   <option value="">{t.form.selectBudget}</option>
                   {Object.entries(t.form.budgetOptions).map(
@@ -537,12 +539,12 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-brand-dark mb-2">
+                <label className="block text-sm font-medium text-ink-900 mb-2">
                   {t.form.timeline}
                 </label>
                 <select
                   name="timeline"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 border border-surface-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-colors duration-200"
                 >
                   <option value="">{t.form.selectTimeline}</option>
                   {Object.entries(t.form.timelineOptions).map(
@@ -556,26 +558,26 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-brand-dark mb-2">
+                <label className="block text-sm font-medium text-ink-900 mb-2">
                   {t.form.projectDescription}
                 </label>
                 <textarea
                   name="project_description"
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors duration-200 placeholder:text-brand-muted"
+                  className="w-full px-4 py-3 border border-surface-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-colors duration-200 placeholder:text-muted-500"
                   placeholder={t.form.placeholders.projectDescription}
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-brand-dark mb-2">
+                <label className="block text-sm font-medium text-ink-900 mb-2">
                   {t.form.additionalRequirements}
                 </label>
                 <textarea
                   name="additional_requirements"
                   rows={3}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors duration-200 placeholder:text-brand-muted"
+                  className="w-full px-4 py-3 border border-surface-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-colors duration-200 placeholder:text-muted-500"
                   placeholder={t.form.placeholders.additionalRequirements}
                 />
               </div>
@@ -597,14 +599,16 @@ export default function ContactPage() {
 
       {/* Contact Information */}
       <Section variant="gradient" padding="xl">
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8">
           <Card variant="elevated" padding="lg">
-            <h2 className="text-2xl font-bold mb-6">{t.contactInfo}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink-900 mb-6">
+              {t.contactInfo}
+            </h2>
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-accent-600/10 rounded-xl flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-brand-primary"
+                    className="w-6 h-6 text-accent-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -618,17 +622,17 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-brand-dark">
+                  <p className="font-semibold text-ink-900">
                     البريد الإلكتروني
                   </p>
-                  <p className="text-brand-muted">{t.info.email}</p>
+                  <p className="text-muted-500">{t.info.email}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-accent-600/10 rounded-xl flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-brand-primary"
+                    className="w-6 h-6 text-accent-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -642,15 +646,15 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-brand-dark">الهاتف</p>
-                  <p className="text-brand-muted">{t.info.phone}</p>
+                  <p className="font-semibold text-ink-900">الهاتف</p>
+                  <p className="text-muted-500">{t.info.phone}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-accent-600/10 rounded-xl flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-brand-primary"
+                    className="w-6 h-6 text-accent-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -670,37 +674,39 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-brand-dark">الموقع</p>
-                  <p className="text-brand-muted">{t.info.location}</p>
+                  <p className="font-semibold text-ink-900">الموقع</p>
+                  <p className="text-muted-500">{t.info.location}</p>
                 </div>
               </div>
             </div>
           </Card>
 
           <Card variant="elevated" padding="lg">
-            <h2 className="text-2xl font-bold mb-6">{t.workingHours}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink-900 mb-6">
+              {t.workingHours}
+            </h2>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                <span className="font-medium text-brand-dark">
+              <div className="flex justify-between items-center py-3 border-b border-surface-200">
+                <span className="font-medium text-ink-900">
                   {t.info.hours.weekdays}
                 </span>
-                <span className="text-brand-muted">
+                <span className="text-muted-500">
                   {t.info.hours.weekdaysTime}
                 </span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                <span className="font-medium text-brand-dark">
+              <div className="flex justify-between items-center py-3 border-b border-surface-200">
+                <span className="font-medium text-ink-900">
                   {t.info.hours.friday}
                 </span>
-                <span className="text-brand-muted">
+                <span className="text-muted-500">
                   {t.info.hours.fridayTime}
                 </span>
               </div>
               <div className="flex justify-between items-center py-3">
-                <span className="font-medium text-brand-dark">
+                <span className="font-medium text-ink-900">
                   {t.info.hours.saturday}
                 </span>
-                <span className="text-brand-muted">
+                <span className="text-muted-500">
                   {t.info.hours.saturdayTime}
                 </span>
               </div>

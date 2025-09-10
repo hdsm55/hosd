@@ -5,32 +5,112 @@ import { Button } from '@/components/ui/Button';
 import { Section } from '@/components/ui/Section';
 import { getProjects } from '@/lib/projects';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Project } from '@/lib/types';
 
-export default function WorkPage() {
+interface WorkPageProps {
+  locale?: 'ar' | 'en' | 'tr';
+}
+
+export default function WorkPage({ locale = 'ar' }: WorkPageProps) {
   // For now, we'll use empty projects array
   // In a real app, you'd fetch this data on the client side or use a different approach
   const projects: Project[] = [];
 
+  const content = {
+    ar: {
+      hero: {
+        title: 'أعمالي',
+        description:
+          'مجموعة من المشاريع التي طورتها بتقنيات حديثة وأفكار إبداعية',
+      },
+      stats: {
+        title: 'إحصائيات المشاريع',
+        description: 'نظرة عامة على إنجازاتي في التطوير والتصميم',
+      },
+    },
+    en: {
+      hero: {
+        title: 'My Work',
+        description:
+          'A collection of projects I developed with modern technologies and creative ideas',
+      },
+      stats: {
+        title: 'Project Statistics',
+        description: 'An overview of my achievements in development and design',
+      },
+    },
+    tr: {
+      hero: {
+        title: 'Çalışmalarım',
+        description:
+          'Modern teknolojiler ve yaratıcı fikirlerle geliştirdiğim projeler koleksiyonu',
+      },
+      stats: {
+        title: 'Proje İstatistikleri',
+        description:
+          'Geliştirme ve tasarım alanındaki başarılarımın genel bakışı',
+      },
+    },
+  };
+
+  const currentContent = content[locale];
+  const isRTL = locale === 'ar';
+
   const getCategoryLabel = (category: string) => {
     const labels = {
-      web_development: 'تطوير المواقع',
-      mobile_app: 'تطبيقات الجوال',
-      ui_ux_design: 'تصميم UI/UX',
-      consultation: 'استشارة تقنية',
-      other: 'أخرى',
+      ar: {
+        web_development: 'تطوير المواقع',
+        mobile_app: 'تطبيقات الجوال',
+        ui_ux_design: 'تصميم UI/UX',
+        consultation: 'استشارة تقنية',
+        other: 'أخرى',
+      },
+      en: {
+        web_development: 'Web Development',
+        mobile_app: 'Mobile Apps',
+        ui_ux_design: 'UI/UX Design',
+        consultation: 'Tech Consultation',
+        other: 'Other',
+      },
+      tr: {
+        web_development: 'Web Geliştirme',
+        mobile_app: 'Mobil Uygulamalar',
+        ui_ux_design: 'UI/UX Tasarım',
+        consultation: 'Teknoloji Danışmanlığı',
+        other: 'Diğer',
+      },
     };
-    return labels[category as keyof typeof labels] || category;
+    return (
+      labels[locale][category as keyof (typeof labels)[typeof locale]] ||
+      category
+    );
   };
 
   const getStatusLabel = (status: string) => {
     const labels = {
-      completed: 'مكتمل',
-      in_progress: 'قيد التطوير',
-      on_hold: 'معلق',
-      cancelled: 'ملغي',
+      ar: {
+        completed: 'مكتمل',
+        in_progress: 'قيد التطوير',
+        on_hold: 'معلق',
+        cancelled: 'ملغي',
+      },
+      en: {
+        completed: 'Completed',
+        in_progress: 'In Progress',
+        on_hold: 'On Hold',
+        cancelled: 'Cancelled',
+      },
+      tr: {
+        completed: 'Tamamlandı',
+        in_progress: 'Devam Ediyor',
+        on_hold: 'Beklemede',
+        cancelled: 'İptal Edildi',
+      },
     };
-    return labels[status as keyof typeof labels] || status;
+    return (
+      labels[locale][status as keyof (typeof labels)[typeof locale]] || status
+    );
   };
 
   const getCategoryIcon = (category: string) => {
@@ -114,15 +194,33 @@ export default function WorkPage() {
     return icons[category as keyof typeof icons] || icons.other;
   };
 
+  // Arrow icon that respects RTL direction
+  const ArrowIcon = () => (
+    <svg
+      className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 5l7 7-7 7"
+      />
+    </svg>
+  );
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
-      <Section variant="gradient" padding="xl">
+      <Section variant="gradient" padding="xl" className="scroll-mt-20 pt-20">
         <div className="text-center">
-          <h1 className="text-5xl font-bold text-brand-dark mb-6">أعمالي</h1>
-          <p className="text-xl text-brand-muted max-w-3xl mx-auto">
-            مجموعة من المشاريع التي عملت عليها، تظهر مهاراتي وخبراتي في التطوير
-            والتصميم مع التركيز على الجودة والابتكار
+          <h1 className="text-4xl md:text-5xl font-bold text-ink mb-6">
+            {currentContent.hero.title}
+          </h1>
+          <p className="text-xl text-muted max-w-3xl mx-auto">
+            {currentContent.hero.description}
           </p>
         </div>
       </Section>
@@ -131,9 +229,9 @@ export default function WorkPage() {
       <Section padding="xl">
         {projects.length === 0 ? (
           <div className="text-center py-16">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-24 h-24 bg-surface-200 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg
-                className="w-12 h-12 text-gray-400"
+                className="w-12 h-12 text-ink-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -146,117 +244,70 @@ export default function WorkPage() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-brand-dark mb-4">
+            <h3 className="text-2xl font-bold text-ink-900 mb-4">
               لا توجد مشاريع متاحة حالياً
             </h3>
-            <p className="text-brand-muted text-lg">
-              سيتم إضافة المشاريع قريباً
-            </p>
+            <p className="text-muted-500 text-lg">سيتم إضافة المشاريع قريباً</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
             {projects.map((project) => (
-              <Card
+              <div
                 key={project.id}
-                variant="elevated"
-                hover
-                className="overflow-hidden group"
+                className="bg-white rounded-2xl shadow-sm border border-surface-200 overflow-hidden group hover:shadow-lg transition-shadow duration-300"
               >
-                {/* Project Header */}
-                <div className="relative h-48 bg-gradient-to-br from-brand-primary to-blue-700 flex items-center justify-center overflow-hidden">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                  <div className="relative text-white text-center z-10">
-                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                      {getCategoryIcon(project.category)}
-                    </div>
-                    <p className="text-sm font-medium opacity-90">
-                      {getCategoryLabel(project.category)}
-                    </p>
-                  </div>
+                {/* Project Image */}
+                <div className="aspect-[16/9] rounded-t-2xl overflow-hidden">
+                  <Image
+                    src="/api/placeholder/800/450"
+                    alt={`${project.title} project screenshot`}
+                    width={800}
+                    height={450}
+                    className="object-cover w-full h-full"
+                  />
                 </div>
 
                 {/* Project Content */}
                 <div className="p-6">
-                  {/* Status and Client */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        project.status === 'completed'
-                          ? 'bg-green-100 text-green-800'
-                          : project.status === 'in_progress'
-                          ? 'bg-blue-100 text-blue-800'
-                          : 'bg-gray-100 text-gray-800'
-                      }`}
-                    >
-                      {getStatusLabel(project.status)}
+                  {/* Category Meta */}
+                  <div className="mb-3">
+                    <span className="text-xs font-medium text-accent-600 uppercase tracking-wide">
+                      {getCategoryLabel(project.category)}
                     </span>
-                    {project.client_name && (
-                      <span className="text-sm text-brand-muted font-medium">
-                        {project.client_name}
-                      </span>
-                    )}
                   </div>
 
-                  {/* Title and Description */}
-                  <h3 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-primary transition-colors">
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-ink-900 mb-3 leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-brand-muted mb-6 text-sm line-clamp-3 leading-relaxed">
+
+                  {/* Description */}
+                  <p className="text-muted-500 text-sm leading-relaxed mb-6 line-clamp-2">
                     {project.short_description || project.description}
                   </p>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-brand-primary/10 text-brand-primary rounded-full text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex gap-3">
-                    <Link href={`/work/${project.slug}`} className="flex-1">
-                      <Button variant="primary" size="sm" className="w-full">
-                        عرض التفاصيل
-                      </Button>
-                    </Link>
-                    {project.project_url && (
-                      <a
-                        href={project.project_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-shrink-0"
-                      >
-                        <Button variant="outline" size="sm">
-                          <svg
-                            className="w-4 h-4 mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
-                          الموقع
-                        </Button>
-                      </a>
-                    )}
-                  </div>
+                  {/* Case Study Button */}
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="inline-flex items-center gap-2 text-accent-600 hover:text-accent-700 font-medium text-sm transition-colors duration-200"
+                  >
+                    <span>Case Study</span>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Link>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         )}
@@ -264,37 +315,31 @@ export default function WorkPage() {
 
       {/* Stats Section */}
       <Section variant="gradient" padding="xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-brand-dark mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-ink-900 mb-4">
             إحصائيات المشاريع
           </h2>
-          <p className="text-xl text-brand-muted max-w-2xl mx-auto">
+          <p className="text-xl text-muted-500 max-w-2xl mx-auto">
             أرقام تعكس جودة العمل والثقة من العملاء
           </p>
         </div>
 
         <div className="grid md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-4xl font-bold text-brand-primary mb-2">
-              50+
-            </div>
-            <div className="text-brand-muted">مشروع مكتمل</div>
+            <div className="text-4xl font-bold text-accent-600 mb-2">50+</div>
+            <div className="text-muted-500">مشروع مكتمل</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-brand-primary mb-2">
-              30+
-            </div>
-            <div className="text-brand-muted">عميل راضي</div>
+            <div className="text-4xl font-bold text-accent-600 mb-2">30+</div>
+            <div className="text-muted-500">عميل راضي</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-brand-primary mb-2">5+</div>
-            <div className="text-brand-muted">سنوات خبرة</div>
+            <div className="text-4xl font-bold text-accent-600 mb-2">5+</div>
+            <div className="text-muted-500">سنوات خبرة</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-brand-primary mb-2">
-              100%
-            </div>
-            <div className="text-brand-muted">رضا العملاء</div>
+            <div className="text-4xl font-bold text-accent-600 mb-2">100%</div>
+            <div className="text-muted-500">رضا العملاء</div>
           </div>
         </div>
       </Section>

@@ -22,7 +22,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className="w-full">
       {label && (
-        <label className="block text-sm font-medium text-brand-dark mb-2">
+        <label className="block text-sm font-medium text-ink-900 mb-2">
           {label}
           {props.required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -30,20 +30,20 @@ export const Input: React.FC<InputProps> = ({
       <div className="relative">
         {icon && (
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <span className="text-brand-muted">{icon}</span>
+            <span className="text-muted-500">{icon}</span>
           </div>
         )}
         <input
           className={cn(
-            'w-full px-4 py-3 border rounded-xl',
-            'focus:ring-2 focus:ring-brand-primary focus:border-transparent',
+            'w-full px-4 py-3 border rounded-2xl',
+            'focus:ring-2 focus:ring-accent-500 focus:border-transparent',
             'transition-all duration-200',
-            'placeholder:text-brand-muted',
-            'disabled:bg-gray-50 disabled:text-gray-500',
+            'placeholder:text-muted-500',
+            'disabled:bg-surface-100 disabled:text-ink-400',
             icon && 'pl-10',
             error
               ? 'border-red-500 focus:ring-red-500'
-              : 'border-gray-300 focus:border-brand-primary',
+              : 'border-surface-300 focus:border-accent-500',
             className
           )}
           {...props}
@@ -62,7 +62,7 @@ export const Input: React.FC<InputProps> = ({
         </p>
       )}
       {helperText && !error && (
-        <p className="mt-1 text-sm text-brand-muted">{helperText}</p>
+        <p className="mt-1 text-sm text-muted-500">{helperText}</p>
       )}
     </div>
   );

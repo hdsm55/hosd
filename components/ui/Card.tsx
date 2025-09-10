@@ -17,10 +17,10 @@ export const Card: React.FC<CardProps> = ({
   hover = false,
 }) => {
   const variants = {
-    default: 'bg-white border border-gray-200',
-    elevated: 'bg-white shadow-lg border border-gray-100',
-    outlined: 'bg-white border-2 border-brand-primary',
-    glass: 'bg-white/80 backdrop-blur-sm border border-white/20',
+    default: 'bg-white border border-surface-200',
+    elevated: 'bg-white shadow-sm border border-surface-200',
+    outlined: 'bg-white border-2 border-accent-600',
+    glass: 'bg-white/80 backdrop-blur-sm border border-surface-200/20',
   };
 
   const paddings = {

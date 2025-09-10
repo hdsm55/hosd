@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Cairo } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/layout/Navbar';
+import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import {
   personStructuredData,
@@ -9,8 +9,16 @@ import {
   websiteStructuredData,
 } from '@/lib/structured-data';
 
-const inter = Inter({ subsets: ['latin'] });
-const cairo = Cairo({ subsets: ['arabic'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+});
+const cairo = Cairo({
+  subsets: ['arabic'],
+  display: 'swap',
+  preload: false, // Load conditionally
+});
 
 export const metadata: Metadata = {
   title: {
@@ -124,7 +132,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} ${cairo.className}`}>
         <div className="min-h-screen flex flex-col">
-          <Navbar />
+          <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
         </div>

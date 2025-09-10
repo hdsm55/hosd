@@ -22,7 +22,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   return (
     <div
       className={cn(
-        'bg-white rounded-2xl p-8 shadow-lg border border-gray-100',
+        'bg-white rounded-2xl p-8 shadow-sm border border-surface-200',
         className
       )}
     >
@@ -34,7 +34,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
               key={i}
               className={cn(
                 'w-5 h-5',
-                i < rating ? 'text-amber-400' : 'text-gray-300'
+                i < rating ? 'text-amber-400' : 'text-muted-300'
               )}
               fill="currentColor"
               viewBox="0 0 20 20"
@@ -46,7 +46,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       )}
 
       {/* Quote */}
-      <blockquote className="text-brand-dark text-lg leading-relaxed mb-6">
+      <blockquote className="text-ink-900 text-lg leading-relaxed mb-6">
         "{quote}"
       </blockquote>
 
@@ -59,15 +59,15 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             className="w-12 h-12 rounded-full object-cover mr-4"
           />
         ) : (
-          <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center mr-4">
-            <span className="text-brand-primary font-semibold text-lg">
+          <div className="w-12 h-12 rounded-full bg-accent-600/10 flex items-center justify-center mr-4">
+            <span className="text-accent-600 font-semibold text-lg">
               {author.name.charAt(0)}
             </span>
           </div>
         )}
         <div>
-          <div className="font-semibold text-brand-dark">{author.name}</div>
-          <div className="text-brand-muted text-sm">
+          <div className="font-semibold text-ink-900">{author.name}</div>
+          <div className="text-muted-500 text-sm">
             {author.role}
             {author.company && ` at ${author.company}`}
           </div>
